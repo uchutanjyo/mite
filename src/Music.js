@@ -6,7 +6,7 @@ import Main from './components/Main'
 const Music = () => {
   return (
     <Main>
-      <h1>Music</h1>
+      <h1 className='header'>Music</h1>
     </Main>
   );
 };

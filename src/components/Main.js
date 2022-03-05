@@ -8,6 +8,8 @@ const Main = ({children}) => {
   return (
 
     <div className='Main'>
+      
+
       {children}
     </div>
   );

@@ -7,7 +7,7 @@ import Main from './components/Main'
 const Live = () => {
   return (
     < Main>
-      <h1>Upcoming Live</h1>
+      <h1 className='header'> Upcoming Live</h1>
     </Main>
   );
 };

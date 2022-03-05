@@ -1,54 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@1,300&family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap');
+
 body {
     display: flex;
+    background-color: whitesmoke;
     align-items: center;
     justify-content: center;
+   font-family: 'Roboto Condensed',
+    sans-serif;
 
-}
-.Navandtitle {
-    height: 100%;
-        position: fixed;
-
-}
+    }
 
 .Nav {
-    background-color: rgba(180, 58, 58, 0.5);
+    background-color: rgba(180, 58, 58, 0.3);
     width: 100vw;
+    height: 2em;
     text-align: center;
     left: 0;
     position: fixed;
     top: 0;
     z-index: 20;
+        margin-top: 2px;
+        padding-top: 15px;
+
+}
+
+.Nav a {
+  
+
+    text-decoration: none;
+    color: black;
+
+}
+
+        
+.Navbar-link {
+    
+    margin-right: 2em;
 }
 
 .Title {
-        
-        max-width: 100%;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-        background-color: rgba(160, 157, 157, 0.5);
+        max-width: 20%;
+    font-family: 'Chakra Petch', sans-serif;
+        background-color: rgba(238, 238, 238, 0.2);
+        font-size: 1em;
+        color: rgba(12, 0, 0, 0.8);
+        margin-left: 0.2em;
+
         }
+.background-title {
+
+                    position: fixed;
+                    min-width: 4em;
+                    min-height: 20em;
+                    left: 0;
+                    background-image: url("mite-portrait.png");
+                    background-size: cover;
+                    cursor: pointer;
+                    z-index: 1;
+
+                }
+
+.Main-banner-background {
+                left: 0;
+                    top: 0;
+                    min-height:4em;
+                       position: fixed;
+                  min-width: 100%;
+                    background-image: url("mite-2.png");
+                    background-size: cover;
+                    cursor: pointer;
+                    z-index: -1;
+                    border: 0px
+                }
+
+
+/* Header of each page */
 
 .header {
             text-align: center;
 
 }
 
-
+/* Main component */
 
 .Main {
-  margin-top:5em;
+        position:relative;
+  margin-top:4em;
         display:flex;
     flex-direction: column;
-max-height: 80vh;
-width: 70vw;
+    align-items: left;
+    min-height: 75vh;
+max-height: 75vh;
+min-width: 70vw;
+max-width: 70vw;
 overflow: auto;
 border: 1px dotted;
 padding: 1em;
+    background-color: rgba(211, 39, 39, 0.1);
+      z-index: 10;
+      border-radius: 5px;
+
 }
 
+
+.Main img {
+text-align: center;
+}
+
+.post {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+
+}
 .Post-date {
-    color:red
+    color:rgb(194, 77, 77)
 }
-
 
 
 .News {
@@ -57,13 +125,24 @@ padding: 1em;
 }
 
 .paragraph {
-    color: blue;
+    color: rgb(95, 95, 100);
     text-align: left;
+        max-width: 90%;
+
 }
-        
-.Navbar-link {
-    margin-right: 1em;
+
+
+
+/* About */
+
+.portrait {
+    max-width: 1%;
+    text-align: center;
 }
-.Title {
-    align-items: center;
+
+
+/* effects */
+.Nav a:hover {
+    opacity: 0.6;
+    text-decoration: underline;
 }

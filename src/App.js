@@ -17,8 +17,8 @@ const App = () => {
 return (
     <>
         <BrowserRouter>
-
     <div className='Navandtitle'>
+             
         <nav className='Nav'>
                     <Link to="/" className='Navbar-link'>Home</Link>
                      <Link to="/About" className='Navbar-link'>About</Link>
@@ -27,13 +27,18 @@ return (
                     <Link to="/Buy" className='Navbar-link'>Buy</Link>
                     <Link to="/Contact" className='Navbar-link'>Contact</Link>
                   
-
+<img src={require("./mite-portrait.png")} className="portrait"/>
 
         </nav>
-                  <h1 className='Title'>mite</h1>
-
+     
     </div>
-
+          <div className='Main-banner-background'>
+         0
+</div>
+<div className='background-title'>
+      
+          <h1 className='Title'>mite</h1>
+                                          </div>  
     <Routes>
 <Route  path="/" element={<Home />} >
 </Route>

@@ -4,7 +4,8 @@ import Main from './components/Main'
 const About = () => {
   return (
 <Main>
-      <h1>About Mite</h1>
+      <h1 className='header'>About Mite</h1>
+      {/* <img src={require("./components/mite-portrait.png")} className="portrait" /> */}
   </Main>
   );
 };
