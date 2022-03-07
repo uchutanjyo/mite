@@ -27,7 +27,7 @@ return (
                     <Link to="/Buy" className='Navbar-link'>Buy</Link>
                     <Link to="/Contact" className='Navbar-link'>Contact</Link>
                   
-<img src={require("./mite-portrait.png")} className="portrait"/>
+<img src={require("./mite-portrait.png")} className="icon"/>
 
         </nav>
      

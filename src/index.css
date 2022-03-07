@@ -12,7 +12,7 @@ body {
     }
 
 .Nav {
-    background-color: rgba(180, 58, 58, 0.3);
+    background-color: rgba(85, 65, 104, 0.4);
     width: 100vw;
     height: 2em;
     text-align: center;
@@ -22,6 +22,7 @@ body {
     z-index: 20;
         margin-top: 2px;
         padding-top: 15px;
+        z-index: 1
 
 }
 
@@ -67,7 +68,7 @@ body {
                     min-height:4em;
                        position: fixed;
                   min-width: 100%;
-                    background-image: url("mite-2.png");
+                    background-image: url("mite-3.png");
                     background-size: cover;
                     cursor: pointer;
                     z-index: -1;
@@ -86,7 +87,7 @@ body {
 
 .Main {
         position:relative;
-  margin-top:4em;
+  margin-top:60px;
         display:flex;
     flex-direction: column;
     align-items: left;
@@ -97,9 +98,12 @@ max-width: 70vw;
 overflow: auto;
 border: 1px dotted;
 padding: 1em;
-    background-color: rgba(211, 39, 39, 0.1);
+    color: rgb(70, 70, 70);
+    background-size: cover;
       z-index: 10;
       border-radius: 5px;
+          background-color: rgba(199, 191, 191, 0.9);
+z-index: 1;
 
 }
 
@@ -136,10 +140,72 @@ text-align: center;
 /* About */
 
 .portrait {
+    max-width: 30%;
+    text-align: center;
+}
+
+.icon {
     max-width: 1%;
     text-align: center;
 }
 
+.Portrait {
+    position: fixed
+}
+
+/* Music */
+.album {
+    background-color: rgba(12, 0, 0, 0.01);
+min-width: 10em;
+min-height: 10em;
+margin-right: 1em;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+border-radius: 5%;
+
+    
+}
+
+.album-title {
+    text-decoration-style: double;
+}
+
+.album img {
+    max-width: 8em;
+}
+.albums {
+    display: flex;
+    flex-direction: row;
+    overflow: auto;
+    margin: 2em;
+    padding: 1em;
+
+}
+
+/* Button */
+.button {
+    max-width: 8em;
+}
+
+/* Modal */
+.modal {
+    border: 1px solid;
+    min-width: 10em;
+    min-height: 10em;
+    background-color: rgb(85, 65, 104);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: fixed;
+    margin: 5em;
+}
 
 /* effects */
 .Nav a:hover {
