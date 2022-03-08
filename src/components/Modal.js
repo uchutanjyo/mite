@@ -15,7 +15,6 @@ const Modal = ({show, onClose, album, children}) => {
 
 {album}
 
-<button onClick={onClose}>close</button>   
 </div>
   );
 };

@@ -9,6 +9,14 @@ const Home = () => {
     <>
  <Main>
        <h1 className='header'>Mite News</h1>
+ <Post id="5" date='2022-03-08'>
+<Paragraph>
+         'detailed album info' functionality successfuly implemented (though not so clean, maybe).
+ </Paragraph>
+
+          </Post>
+
+
     <Post id="4" date='2022-03-07'>
 <Paragraph>
          been a few days. Modal was added to the 'Music' page (but so far empty of content). list of albums incl. album name, release year (??) and cover art added to Music page, as well. the data was mapped from a seperate file containing an array of objects. the next functionality will be: the modal will display more detailed album info for each album, depending on which is clicked.

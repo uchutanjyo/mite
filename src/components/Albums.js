@@ -17,9 +17,9 @@ const [albumId, setAlbumId] = useState('')
     return (
     <>
 
- <Modal onClose={()=> {setShow(false)}} show={show} album={album}>
+ <Modal  show={show} album={album}>
 {albums.map((album) => {
-const {id, title, release, info, image} = album;
+const {id, title, release, info, image, onClose} = album;
    if( album.id == albumId ) {
 return (
 <div className="modal-album"key={id}> 
@@ -27,6 +27,8 @@ return (
 <div className='modal-album-release'>{release}</div>
 <img src={image} alt={title} />
 <div className='modal-album-info'>{info}</div>
+<button onClick={() => setShow(false)}>close</button>   
+
 </div>
 )}
 })}
