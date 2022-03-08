@@ -1,16 +1,21 @@
-import React from 'react';
+import React, {useState} from 'react';
 
-
-const Modal = ({show, onClose, id, title, release, info, image, children}) => {
+const Modal = ({show, onClose, album, children}) => {
 
     if (!show) {
         return null
     }
+
+
   return (
     <div className='modal'>
-    {children} 
-<button onClick={onClose}>lose modal</button>   
 
+
+    {children} 
+
+{album}
+
+<button onClick={onClose}>close</button>   
 </div>
   );
 };

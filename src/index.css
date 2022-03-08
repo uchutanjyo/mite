@@ -22,6 +22,7 @@ body {
     z-index: 20;
         margin-top: 2px;
         padding-top: 15px;
+        padding-bottom: 15px;
         z-index: 1
 
 }
@@ -31,6 +32,7 @@ body {
 
     text-decoration: none;
     color: black;
+    font-size: 2em;
 
 }
 
@@ -65,7 +67,7 @@ body {
 .Main-banner-background {
                 left: 0;
                     top: 0;
-                    min-height:4em;
+                    min-height:5em;
                        position: fixed;
                   min-width: 100%;
                     background-image: url("mite-3.png");
@@ -87,7 +89,7 @@ body {
 
 .Main {
         position:relative;
-  margin-top:60px;
+  margin-top:80px;
         display:flex;
     flex-direction: column;
     align-items: left;
@@ -102,7 +104,7 @@ padding: 1em;
     background-size: cover;
       z-index: 10;
       border-radius: 5px;
-          background-color: rgba(199, 191, 191, 0.9);
+    background-color: rgba(52, 25, 80, 0.4);
 z-index: 1;
 
 }
@@ -141,7 +143,8 @@ text-align: center;
 
 .portrait {
     max-width: 30%;
-    text-align: center;
+
+
 }
 
 .icon {
@@ -150,7 +153,7 @@ text-align: center;
 }
 
 .Portrait {
-    position: fixed
+ 
 }
 
 /* Music */
@@ -169,7 +172,7 @@ border-radius: 5%;
 }
 
 .album-title {
-    text-decoration-style: double;
+    text-decoration: dashed;
 }
 
 .album img {
@@ -194,17 +197,43 @@ border-radius: 5%;
     border: 1px solid;
     min-width: 10em;
     min-height: 10em;
-    background-color: rgb(85, 65, 104);
+    background-color: rgba(85, 65, 104,0.95);
     z-index: 10;
     display: flex;
     justify-content: center;
-    align-items: center;;
+    align-items: center;
+    
     top:0;
     bottom: 0;
     left: 0;
     right: 0;
     position: fixed;
     margin: 5em;
+}
+.modal-album {
+   background-color: rgba(12, 0, 0, 0.8);
+    min-width: 70%;
+    min-height: 70%;
+    padding: 2em;
+    border-radius: 1%;
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+}
+
+.modal-album-title {
+color:rgb(214, 48, 48)
+}
+
+.modal-album-release {
+    color: rgb(226, 100, 100)
+}
+
+.modal-album-info {
+
+   color: white;
+   padding: 1em
 }
 
 /* effects */

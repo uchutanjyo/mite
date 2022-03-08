@@ -15,6 +15,7 @@ const Music = () => {
   console.log(albums)
 
 
+    
   return (
     <>
     <Modal onClose={()=> {setShow(false)}} show={show}>
@@ -25,7 +26,8 @@ const Music = () => {
       <h1 className='header'>Music</h1>
 
            <div className='albums'>
-            <Albums  albums={albums}/>
+            <Albums  albums={albums} />
+            
             </div>
 
               <button className='button' onClick={() => setShow(true)}  show={show}>oepn</button>
