@@ -30,8 +30,6 @@ const Music = () => {
             
             </div>
 
-              <button className='button' onClick={() => setShow(true)}  show={show}>oepn</button>
-
     </Main>
     </>
   );

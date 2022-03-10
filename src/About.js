@@ -15,7 +15,10 @@ const About = () => {
     
 <div className='about'>
        <Paragraph>
-mite was born  out of  Mite wanting to hear certain sounds.  it  wanted to make the most personally pleasing sounds possible (which often means displeasing others...). the "style" varies,. but is becoming more and more *NOISE* as of late. 
+mite was born  out of  Mite wanting to hear certain sounds.  it  wanted to make the most personally pleasing sounds possible (which often means displeasing others...). the "style" varies,. but it's becoming more and more *NOISE* as of late. 
+</Paragraph>
+<Paragraph>
+      located in Toronto, ON and has also been located in Tokyo. open to collaboration of (almost) any kind.
 </Paragraph>
    <Paragraph>
 some words that describe  mite's music: ugly, displeasing, scary, unappealing, harsh, dissonant, relaxing, annoying, fun, dark, light, dissociative, varied, pleasing, beautiful, rich, tinny, lacking, minimal,  maximal, poo, noisy, melodic, improvised, not considered, no thought, just feeling, comedy, live DJ set, old  keyboard with built in MIDI instruments covered with black paint, a guitar with less than 5 strings, a dusty bass, a,  the same pedal setup since the beginning, the, rock, ambient,  rock,
