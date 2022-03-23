@@ -14,3 +14,5 @@ const Modal = ({show, onClose, album, children}) => {
 };
 
 export default Modal;
+
+
