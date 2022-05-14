@@ -8,7 +8,7 @@ import { Link, BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from './Home';
 import About from './About';
 import Music from './Music';
-import Live from './Live';
+import Player from './Player';
 import Buy from './Buy';
 import Contact from './Contact';
 
@@ -23,7 +23,7 @@ return (
                     <Link to="/" className='Navbar-link'>Home</Link>
                      <Link to="/About" className='Navbar-link'>About</Link>
                     <Link to="/Music" className='Navbar-link'>Music</Link>
-                    <Link to="/Live" className='Navbar-link'>Live</Link>
+                    <Link to="/Player" className='Navbar-link'>Player</Link>
                     <Link to="/Buy" className='Navbar-link'>Buy</Link>
                     <Link to="/Contact" className='Navbar-link'>Contact</Link>
                   
@@ -46,7 +46,7 @@ return (
 </Route>
 <Route  path="music/" element={<Music />}>
 </Route>
-<Route  path="live/" element={<Live />}>
+<Route  path="player/" element={<Player />}>
 </Route>
 <Route  path="buy/" element={<Buy />}>
 </Route>
