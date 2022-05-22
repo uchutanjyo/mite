@@ -7,17 +7,16 @@ const nextBtn = document.querySelector('#next');
 const audio = document.querySelector('audio');
 const progressCont = document.querySelector('#progress-container');
 const progress = document.querySelector('#progress');
-currentTimeEl = document.querySelector('.current-time');
-durationEl = document.querySelector('.duration');
+const currentTimeEl = document.querySelector('.current-time');
+const durationEl = document.querySelector('.duration');
 const albumArt = document.querySelector('#albumart');
 const artist = document.querySelector('#artist');
 const title  = document.querySelector('#title');
 
 
-
 // Music
 
-songs = [
+const songs = [
     {
         name: 'sliver',
         displayName: 'Sliver - unreleased',
@@ -38,6 +37,7 @@ songs = [
     // Play
     
     function playSong() {
+        console.log('OK')
     isPlaying = true;
     playBtn.classList.replace('fa-play', 'fa-pause');
     playBtn.setAttribute('title', 'Pause');
@@ -47,6 +47,8 @@ songs = [
     // Pause
     
     function pauseSong() {
+        console.log('OK')
+
         isPlaying  = false;
         playBtn.classList.replace('fa-pause', 'fa-play');
         playBtn.setAttribute('title', 'Play');
@@ -64,8 +66,8 @@ songs = [
     function loadSong(song) {
         title.textContent = song.displayName;
         artist.textContent = song.artist;
-       audio.src = `mp3s/${song.name}.mp3`;
-       albumArt.src =`images/${song.name}.jpg`;
+        audio.src = `https://github.com/uchutanjyo/mite/blob/main/src/player/mp3s/${song.name}.mp3`;
+        albumArt.src =`https://github.com/uchutanjyo/mite/blob/main/src/player/images/${song.name}.jpg`;
     };
     
     
