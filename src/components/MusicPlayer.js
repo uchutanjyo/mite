@@ -1,5 +1,5 @@
 import React, { useEffect, useState} from 'react';
-
+import wami from './wami.mp3'
 
 
 // Music player
@@ -17,10 +17,11 @@ const durationEl = document.querySelector('.duration');
 
 const songs = [
     {
-        name: 'sliver',
-        displayName: 'Sliver - unreleased',
+        name: 'wami',
+        displayName: 'Q-Q Birds - Clean',
         artist: 'Mite',
-        date: '2020'
+        date: '2020',
+        file: wami
     },
     
     {
@@ -34,7 +35,7 @@ const MusicPlayer = () => {
 
     
     const [songTitle, setSongTitle] = useState('')
-    const [songFile, setSongFile] = useState(new Audio('/wami.mp3'))
+    const [songFile, setSongFile] = useState(null)
     const [songArtist, setSongArtist] = useState('')
     
     useEffect(() => {
@@ -57,9 +58,9 @@ const MusicPlayer = () => {
     const loadSong = (song) => {
         console.log('eric')
 
-        setSongTitle('ernie')
-        setSongArtist('ernie')
-        // setSongFile()
+        setSongTitle(songs[songIndex].displayName)
+        setSongArtist(songs[songIndex].artist)
+        setSongFile(new Audio((songs[songIndex].file)))
 
     };
     
@@ -84,7 +85,7 @@ isPlaying = true;
 let audio = document.querySelector('#audio')
 console.log(audio)
 
-audio.play();
+songFile.play();
 }
 
 // Pause
@@ -184,8 +185,8 @@ const pauseSong = () => {
       <img src="images/youngmongrel.JPG" alt="Album Art" id="albumart2"/>
      <audio id="audio"><source src={songFile} type="audio/mp3" /></audio>
   </div>
-  <h2 id="title"></h2>
-  <h3 id="artist"></h3>
+  <h2 id="title">{songTitle}</h2>
+  <h3 id="artist">{songArtist}</h3>
   <div className="progress-container" id="progress-container">
   <div className="progress" id="progress"></div>
   <div className="duration-wrapper">
