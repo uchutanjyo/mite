@@ -32,11 +32,12 @@ const songs = [
     ]
 
 const MusicPlayer = () => {
-
-    
     const [songTitle, setSongTitle] = useState('')
     const [songFile, setSongFile] = useState(null)
     const [songArtist, setSongArtist] = useState('')
+    const [songIndex, setSongIndex] = useState('0')
+    const [isPlaying, setIsPlaying] = useState(false)
+
     
     useEffect(() => {
         const playBtn = document.querySelector('#play');
@@ -52,12 +53,8 @@ const MusicPlayer = () => {
     }, [])
 
 
-        //   Song index
-        let songIndex = 0;
 
     const loadSong = (song) => {
-        console.log('eric')
-
         setSongTitle(songs[songIndex].displayName)
         setSongArtist(songs[songIndex].artist)
         setSongFile(new Audio((songs[songIndex].file)))
@@ -67,36 +64,41 @@ const MusicPlayer = () => {
     
     useEffect( () => {
         loadSong(songs[songIndex])
-        console.log('poo', songFile)
-
     }       
     , [])
 
 
 
-// Check if playing
-let isPlaying = false;
-    
 // Play
 const playSong = () => {
-isPlaying = true;
-// playBtn.classList.replace('fa-play', 'fa-pause');
-// playBtn.setAttribute('title', 'Pause');
-let audio = document.querySelector('#audio')
-console.log(audio)
-
-songFile.play();
+    setIsPlaying(true)
 }
+
+    
+useEffect( () => {
+    if (songFile != null) {
+    let audio = document.querySelector('#audio')
+    songFile.play();
+    console.log(isPlaying)
+}       }
+, [ isPlaying])
+
+
+
 
 // Pause
 const pauseSong = () => {
-    console.log('OK')
+    setIsPlaying(false);
 
-    isPlaying  = false;
-    playBtn.classList.replace('fa-pause', 'fa-play');
-    playBtn.setAttribute('title', 'Play');
-    songFile.pause();
     }
+
+    useEffect( () => {
+        if ((songFile != null && !isPlaying)) {
+
+            songFile.pause();
+    }       }
+    , [isPlaying])
+
 
      // Next song
      const nextSong = () => {
@@ -108,19 +110,17 @@ const pauseSong = () => {
         playSong()
         ;}
     
+
     // Prev song
     const prevSong = () => {
-        songIndex--;
+        setSongIndex(0);
         if (songIndex < 0) {
-        songIndex = songs.length - 1;
+        setSongIndex(songs.length - 1);
         }
         loadSong(songs[songIndex]);
         playSong();
     }
 
-  
-
-        
         // Update progress
         const updateProgressBar = (e) => {
             if (isPlaying) {
@@ -147,18 +147,7 @@ const pauseSong = () => {
         
             currentTimeEl.textContent = `${currentMinutes}:${currentSeconds}`
         }}; 
-        
-        // On load - Select first song
- 
-
-   
-            // songFile.addEventListener('ended', nextSong);
     
-            // songFile.addEventListener('timeupdate', updateProgressBar);
-            
-            // progressCont.addEventListener('click', setProgressBar)
-         
-  
         
         
         // Set progress bar
@@ -195,7 +184,7 @@ const pauseSong = () => {
   </div>
   <div className="player-controls">
       <i onClick={prevSong} className="fas fa-backward" id="prev" title="backward"></i>
-      <i onClick={isPlaying ? pauseSong : playSong} className="fas fa-play main-button" id="play" title="play"></i>
+      <i onClick={isPlaying ? pauseSong : playSong} className={`${isPlaying} ? fas fa-forward : fas fa-backward`} id="play" title="play"></i>
       <i onClick={nextSong} className="fas fa-forward" id="next" title="forward"></i>
 
   </div>
