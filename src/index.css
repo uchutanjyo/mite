@@ -364,11 +364,7 @@ color:rgb(214, 48, 48)
       margin-right: 1.5em;
   }
 
-  #play {
-    margin-right: .5em;
-
-}
 
 #next {
-    margin-right: 1em;
+    margin-left: 1em;
 }
