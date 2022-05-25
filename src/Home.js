@@ -9,6 +9,13 @@ const Home = () => {
     <>
  <Main>
        <h1 className='header'>Mite News</h1>
+
+       <Post id="7" date='2022-06-25'>
+<Paragraph>
+from the webmaster: the Mite music player has finally been added, but it's a bit broken - you can't skip to different sections of the song, yet. this feature is coming soon. however, you can check out 2 old & rare Mite tracks (so far).
+ </Paragraph>
+          </Post>
+
        <Post id="6" date='2022-05-14'>
 <Paragraph>
 from the webmaster: several Mite albums have been released since the last post. I've been busy with other projects, but this site is in serious need of updates. I'll attempt a deploy on Netlify tonight, and will be adding the already-built music player - probably tomorrow.
