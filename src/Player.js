@@ -10,6 +10,8 @@ const Player = () => {
 
   return (
 <div className="main-player">
+<h1 className='header'>Mite Music Player</h1>
+
   <MusicPlayer></MusicPlayer>
 </div> 
   );

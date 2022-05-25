@@ -194,7 +194,6 @@ useEffect( () => {
     return (
     <>
 
-<h1 className='header'> Mite Music Player</h1>
 <div className="player-container">
 
 

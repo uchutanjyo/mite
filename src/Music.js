@@ -23,7 +23,7 @@ const Music = () => {
     <Main>
  
 
-      <h1 className='header'>Music</h1>
+      <h1 className='header'>Official Mite Releases</h1>
 
            <div className='albums'>
             <Albums  albums={albums} />

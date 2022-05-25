@@ -107,6 +107,8 @@ padding: 1em;
       border-radius: 5px;
     background-color: rgba(52, 25, 80, 0.4);
 z-index: 1;
+font-size: 23px;
+
 
 }
 
@@ -129,6 +131,8 @@ padding: 1em;
       border-radius: 5px;
     background-color: rgba(52, 25, 80, 0.4);
 z-index: 1;
+font-size: 23px;
+
 }
 
 
@@ -166,27 +170,43 @@ text-align: center;
 /* About */
 
 .about {
-margin-left: 2em;
-margin-right: 2em;
+display: flex;
+justify-content: center;
 font-size: 15px;
+font-size: 23px;
 
     
+}
+
+.about div {
+  padding-right: 1em;
+  margin-left: 1em;
+  border-right: 1px solid;
+}
+
+.about section {
+  margin-top: 1em;
+  margin-bottom: 1em;
+
 }
 
 .Portraits {
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 1;
     position: relative;
+  
 }
 
 
 .portrait {
  
    height: 500px;
-    border: 8px solid rgba(238, 19, 19, 0.51);
+    border: 1px solid rgba(238, 19, 19, 0.51);
     border-radius: 75%;
+  opacity: 60%;
+  margin-bottom: 2em;
+  margin-top: 2em;
 
 
 }
@@ -307,6 +327,7 @@ color:rgb(214, 48, 48)
     flex-direction: column;
 align-items: center;
 justify-content: center;
+padding-bottom: 1em;
   }
   
   .img-container {
