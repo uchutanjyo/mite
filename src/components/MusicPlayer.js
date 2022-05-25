@@ -4,17 +4,6 @@ import unreleased1 from '../mp3s/unreleased-1.mp3'
 
 
 // Music player
-
-const progressCont = document.querySelector('#progress-container');
-const progress = document.querySelector('#progress');
-const currentTimeEl = document.querySelector('.current-time');
-const durationEl = document.querySelector('.duration');
-const albumArt = document.querySelector('#albumart');
-const artist = document.querySelector('#artist');
-const title  = document.querySelector('#title');
-
-
-
 const songs = [
     {
         name: 'wami',
@@ -34,7 +23,9 @@ const songs = [
         albumArt: 'albums/thumbnails/hole.jpg'
 
 
-    }
+    },
+
+
     ]
 
 const MusicPlayer = () => {
@@ -52,8 +43,37 @@ const MusicPlayer = () => {
     const [isPlaying, setIsPlaying] = useState(false)
     const [duration, setDuration] = useState(null)
     
+const getAudio = () => {
+
+
+     if (songIndex > songs.length - 1) {
+         
+        setSongIndex(0);
+        return new Audio(songs[0].file)    }
+   
+           if (songIndex < 0) {
+         console.log(songIndex < 0)
+         let songsLength = songs.length - 1
+        setSongIndex(songsLength);
+        console.log(songsLength)
+        return new Audio(songs[songsLength].file)
+    }
+    else { 
+        
+        return new Audio(songs[songIndex].file)
+       }
+}
+
+    //  if (songIndex < 0) {
+    //      console.log(songIndex < 0)
+    //      let songsLength = songs.length - 1
+    //     setSongIndex(songsLength);
+    //     console.log(songsLength)
+    //     return new Audio(songs[songsLength].file)
+    // }
+
     const progressBar = useRef();
-    const audioRef = useRef(new Audio((songs[songIndex].file)));
+    const audioRef = useRef(getAudio());
     const intervalRef = useRef();
 
     const loadSong = (song) => {
@@ -126,11 +146,9 @@ useEffect( () => {
             setIsPlaying(false);
 
             if (songIndex > songs.length - 1) {
-                setSongIndex(0);
-                return
+                alert('no more songs')
             }
             if (songIndex < 0) {
-                setSongIndex(songs.length - 1)
                 return
             }
             console.log(songIndex)
