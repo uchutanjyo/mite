@@ -43,7 +43,6 @@ const MusicPlayer = () => {
     const [songIndex, setSongIndex] = useState(0)
     const [songArt, setSongArt] = useState(null)
     const [songDate, setSongDate] = useState('')
-    const [songFile, setSongFile] = useState(null)
 
     const [trackProgress, setTrackProgress] = useState('0')
     const [progressPercent, setProgressPercent] = useState('0')
@@ -54,23 +53,18 @@ const MusicPlayer = () => {
     const [duration, setDuration] = useState(null)
     
     const progressBar = useRef();
+    const audioRef = useRef(new Audio((songs[songIndex].file)));
     const intervalRef = useRef();
-    const audioRef = useRef();
-
-
 
     const loadSong = (song) => {
         setSongTitle(songs[songIndex].displayName)
         setSongArtist(songs[songIndex].artist)
         setSongDate(songs[songIndex].date)
         setSongArt(songs[songIndex].albumArt)
-            setSongFile(new Audio((songs[songIndex].file)))
-console.log(songFile)
+        // audioRef.current.addEventListener('loadedmetadata', (e) => {
+ 
     };
 
-
-
-  
 
     const startTimer = () => {
         // Clear any timers already running
@@ -79,7 +73,6 @@ console.log(songFile)
        intervalRef.current = setInterval(() => {
             if (isPlaying) {
             setTrackProgress(Math.floor(audioRef.current.currentTime));
-            console.log(songFile)
 
             // if (duration != null) {
 
@@ -93,11 +86,6 @@ console.log(songFile)
       
   }
       
-    useEffect( () => {
-        
-        loadSong(songs[songIndex])
-    }       
-    , [songIndex])
 
 // Play
 const playSong = () => {
@@ -132,6 +120,11 @@ useEffect( () => {
     // when songIndex drops below zero, set to the final array index
     // i managed to make this work by returning automatically on songIndex reset (before, it was executing loadSong before the state had a chance to update)
         useEffect( () => {
+            console.log(songIndex)
+
+            audioRef.current.pause()
+            setIsPlaying(false);
+
             if (songIndex > songs.length - 1) {
                 setSongIndex(0);
                 return
@@ -141,40 +134,45 @@ useEffect( () => {
                 return
             }
             console.log(songIndex)
+
             loadSong(songs[songIndex]);
+            audioRef.current = new Audio(songs[songIndex].file)
+
+
 
               }
-        , [songIndex])
+        , [ songIndex])
+
 
 // this one took me a while - setting total duration of each track
         useEffect( () => {
-            if (audioRef.current != null) {
+            if (audioRef.current) {
             audioRef.current.addEventListener('loadedmetadata', (e) => {
                 if (audioRef.current.duration != NaN) {
-                    const dur = Math.round(audioRef.current.duration)
+                    console.log(audioRef)
+
+                    const dur = Math.floor(audioRef.current.duration)
                     const minutes = Math.floor(dur / 60);
                     const seconds = dur - minutes * 60;
                     setDuration(`${minutes}:${seconds}`) 
                     setProgressPercent((audioRef.current.currentTime/dur) * 100)
-console.log(progressPercent)
                 }
               }) }
-
         }       
-        , [audioRef])
+        , [audioRef, songIndex])
     
 
-        const setProgressBar = (e) => {
-            console.log('dwsf')
-            const width = e.clientX;
-            const clickX = e.nativeEvent.offsetX;
-            console.log(audioRef)
-            const {duration} = audioRef;
-        const ok = (clickX / width) * duration;
+        // const setProgressBar = (e) => {
+        //     console.log('dwsf')
+        //     const width = e.clientX;
+        //     const clickX = e.nativeEvent.offsetX;
+        //     console.log(audioRef)
+        //     const {duration} = audioRef;
+        // const ok = (clickX / width) * duration;
 
-            setTrackProgress(ok)
+        //     setTrackProgress(ok)
 
-        }
+        // }
     return (
     <>
 
@@ -188,7 +186,7 @@ console.log(progressPercent)
   </div>
   <h2 id="title">{songTitle}</h2>
   <h3 id="artist">{songArtist} - {songDate}</h3>
-  <div className="progress-container" id="progress-container" onClick={setProgressBar} >
+  <div className="progress-container" id="progress-container"  >
   <div className="progress" id="progress" style={{width : `${progressPercent}%`}}  ref={progressBar}></div>
   <div className="duration-wrapper">
       <span className="current-time">{trackProgress}</span>
