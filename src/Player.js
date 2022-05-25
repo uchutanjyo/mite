@@ -9,9 +9,9 @@ const Player = () => {
 
 
   return (
-    <Main>
-           <MusicPlayer></MusicPlayer>
-    </Main>
+<div className="main-player">
+  <MusicPlayer></MusicPlayer>
+</div> 
   );
 };
 

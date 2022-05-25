@@ -22,7 +22,7 @@ const songs = [
         artist: 'Mite',
         date: '2018',
         file: wami,
-        albumArt: './albums/thumbnails/hole.jpg'
+        albumArt: 'https://f4.bcbits.com/img/a1756680641_2.jpg'
     },
     
     {
@@ -31,7 +31,7 @@ const songs = [
         artist: 'Mite',
         date: '2020',
         file: unreleased1,
-        albumArt: './albums/thumbnails/hole.jpg'
+        albumArt: 'albums/thumbnails/hole.jpg'
 
 
     }
@@ -43,8 +43,10 @@ const MusicPlayer = () => {
     const [songIndex, setSongIndex] = useState(0)
     const [songArt, setSongArt] = useState(null)
     const [songDate, setSongDate] = useState('')
+    const [songFile, setSongFile] = useState(null)
 
     const [trackProgress, setTrackProgress] = useState('0')
+    const [progressPercent, setProgressPercent] = useState('0')
 
 
 
@@ -52,18 +54,23 @@ const MusicPlayer = () => {
     const [duration, setDuration] = useState(null)
     
     const progressBar = useRef();
-    const audioRef = useRef(new Audio((songs[songIndex].file)));
     const intervalRef = useRef();
+    const audioRef = useRef();
+
+
 
     const loadSong = (song) => {
         setSongTitle(songs[songIndex].displayName)
         setSongArtist(songs[songIndex].artist)
         setSongDate(songs[songIndex].date)
         setSongArt(songs[songIndex].albumArt)
-        
-
+            setSongFile(new Audio((songs[songIndex].file)))
+console.log(songFile)
     };
-    
+
+
+
+  
 
     const startTimer = () => {
         // Clear any timers already running
@@ -72,22 +79,25 @@ const MusicPlayer = () => {
        intervalRef.current = setInterval(() => {
             if (isPlaying) {
             setTrackProgress(Math.floor(audioRef.current.currentTime));
+            console.log(songFile)
+
+            // if (duration != null) {
+
+            //     setProgressPercent((trackProgress/duration) * 100)
+            //     console.log(progressPercent)
+            // }
+        
        }
 
         }, [1000]);
       
   }
-
-    
+      
     useEffect( () => {
         
         loadSong(songs[songIndex])
     }       
-    , [audioRef])
-
-
-
-
+    , [songIndex])
 
 // Play
 const playSong = () => {
@@ -130,6 +140,7 @@ useEffect( () => {
                 setSongIndex(songs.length - 1)
                 return
             }
+            console.log(songIndex)
             loadSong(songs[songIndex]);
 
               }
@@ -137,18 +148,68 @@ useEffect( () => {
 
 // this one took me a while - setting total duration of each track
         useEffect( () => {
-            if (audioRef.current) {
+            if (audioRef.current != null) {
             audioRef.current.addEventListener('loadedmetadata', (e) => {
                 if (audioRef.current.duration != NaN) {
                     const dur = Math.round(audioRef.current.duration)
                     const minutes = Math.floor(dur / 60);
                     const seconds = dur - minutes * 60;
-                    setDuration(`${minutes}:${seconds}`) }
+                    setDuration(`${minutes}:${seconds}`) 
+                    setProgressPercent((audioRef.current.currentTime/dur) * 100)
+console.log(progressPercent)
+                }
               }) }
 
         }       
         , [audioRef])
     
+
+        const setProgressBar = (e) => {
+            console.log('dwsf')
+            const width = e.clientX;
+            const clickX = e.nativeEvent.offsetX;
+            console.log(audioRef)
+            const {duration} = audioRef;
+        const ok = (clickX / width) * duration;
+
+            setTrackProgress(ok)
+
+        }
+    return (
+    <>
+
+<h1 className='header'> Mite Music Player</h1>
+<div className="player-container">
+
+
+  <div className="img-container">
+      <img src={songArt} alt="Album Art" id="albumart2"/>
+     <audio id="audio"><source src={audioRef}  type="audio/mp3" /></audio>
+  </div>
+  <h2 id="title">{songTitle}</h2>
+  <h3 id="artist">{songArtist} - {songDate}</h3>
+  <div className="progress-container" id="progress-container" onClick={setProgressBar} >
+  <div className="progress" id="progress" style={{width : `${progressPercent}%`}}  ref={progressBar}></div>
+  <div className="duration-wrapper">
+      <span className="current-time">{trackProgress}</span>
+      <span className="duration">{duration}</span>
+  </div>
+  <div className="player-controls">
+      <i onClick={() => setSongIndex(songIndex - 1)} className="fas fa-backward" id="prev" title="backward"></i>
+      <i onClick={playSong} className={!isPlaying && 'fas fa-play main-button'} id="play" title="play"></i>
+      <i onClick={pauseSong} className={isPlaying && 'fas fa-pause main-button'} id="pause" title="pause"></i>
+      <i onClick={() => setSongIndex(songIndex + 1)} className="fas fa-forward" id="next" title="forward"></i>
+
+  </div>
+  </div>
+</div>
+
+</>
+    )
+}
+
+export default MusicPlayer;
+
 
         // const updateProgressBar = (e) => {
         //     const width = e.clientX;
@@ -177,53 +238,3 @@ useEffect( () => {
         
         // }
         // 
-        // const setProgressBar = (e) => {
-        //     console.log(e)
-        //     const width = e.clientX;
-        //     const clickX = e.nativeEvent.offsetX;
-        //     console.log(audioRef)
-        //     const {duration} = audioRef;
-        //     console.log(width, clickX, duration)
-        //     audioRef.currentTime = (clickX / width) * duration;
-
-        //     setTrackProgress(audioRef.trackProgress)
-
-        // }
-
-
-
-    return (
-    <>
-                   <div className='albums'>
-
-<h1 className='header'> Mite Music Player</h1>
-<div className="player-container">
-
-
-  <div className="img-container">
-      <img src={songArt} alt="Album Art" id="albumart2"/>
-     <audio id="audio"><source src={audioRef}  type="audio/mp3" /></audio>
-  </div>
-  <h2 id="title">{songTitle}</h2>
-  <h3 id="artist">{songArtist} - {songDate}</h3>
-  <div className="progress-container" id="progress-container"  ref={progressBar}>
-  <div className="progress" id="progress" ></div>
-  <div className="duration-wrapper">
-      <span className="current-time">{trackProgress}</span>
-      <span className="duration">{duration}</span>
-  </div>
-  <div className="player-controls">
-      <i onClick={() => setSongIndex(songIndex - 1)} className="fas fa-backward" id="prev" title="backward"></i>
-      <i onClick={playSong} className={!isPlaying && 'fas fa-play main-button'} id="play" title="play"></i>
-      <i onClick={pauseSong} className={isPlaying && 'fas fa-pause main-button'} id="pause" title="pause"></i>
-      <i onClick={() => setSongIndex(songIndex + 1)} className="fas fa-forward" id="next" title="forward"></i>
-
-  </div>
-  </div>
-</div>
-</div>
-</>
-    )
-}
-
-export default MusicPlayer;
